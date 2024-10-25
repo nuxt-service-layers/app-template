@@ -1,5 +1,5 @@
-import servicesConfig from "../services.config"
+// import servicesConfig from "../services.config"
 
 export default defineNuxtPlugin((nuxtApp) => {
-	nuxtApp.provide("servicesConfig", servicesConfig)
+	// nuxtApp.provide("servicesConfig", servicesConfig)
 })
