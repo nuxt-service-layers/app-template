@@ -1,7 +1,7 @@
 // NOTE: Restart the dev server after changing these options //
 
-const servicesConfig: ServiceLayerConfig = {
-	database: "postgres",
+const servicesConfig: ServiceConfig = {
+	database: "firebase",
 }
 
 export default servicesConfig
