@@ -1,75 +1,65 @@
-# Nuxt Minimal Starter
+# Nuxt Service Layers
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is an attempt at using nuxt layers to modularise complex functionality for rapid development. I
+imagine this will be most useful when constructing small scale apps that only need common features.
+There is of course a trade off between flexability and development speed.
 
-## Setup
+## Services
 
-Make sure to install dependencies:
+This project is in its birthing stage the this list is very limeted and has limeted support of
+database types.
 
-```bash
-# npm
-npm install
+The plan is for each service to have a set of code interactions for any type of database allowing
+for very versatile usage and rapid implementaion.
 
-# pnpm
-pnpm install
+##### Users
 
-# yarn
-yarn install
+This will provide the app with a global $User pinia store that can be used to add and manipulate
+users. The plan is to have it provide all the nessersary manipulations for the user and handle
+seemlessly the logged in user.
 
-# bun
-bun install
+##### Notifications
+
+To provide a notification system allowing for emails, sms and in app notifications.
+
+##### Payments
+
+Speed up payment integration with your app with a payment layer. This should handle different
+payment providers and store payment information in the database.
+
+## Getting started
+
+Simply fire up the dev container I have provided.
+
+##### Database Connection
+
+In your `services.config.ts` choose your database type:
+
+```ts
+const servicesConfig: ServiceLayerConfig = {
+	database: "firestore" | "postgres" | "mongo" | "sqlite",
+}
 ```
 
-## Development Server
+Then add the details to the .env file provided.
 
-Start the development server on `http://localhost:3000`:
+##### Adding Services
 
-```bash
-# npm
-npm run dev
+In your `services.config.ts` simply add the service to the service array:
 
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+```ts
+const servicesConfig: ServiceLayerConfig = {
+	services: [
+		{ name: "users", version: "1.0.0" },
+		{ name: "notifications", version: "1.0.0" },
+	],
+}
 ```
 
-## Production
+#### Layer Diagram
 
-Build the application for production:
+Here I have made a diagram. As you can see your project app only needs to interface directly with
+the services. Which can be selected in the `services.config.ts`. All the rest happens under the
+hood.
 
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+![Diagram of the layer stack](./assets/stack-diagram.png)
