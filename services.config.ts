@@ -2,7 +2,6 @@
 
 const servicesConfig: ServiceConfig = {
 	database: "firestore",
-	env: "dev",
 }
 
 export default servicesConfig
