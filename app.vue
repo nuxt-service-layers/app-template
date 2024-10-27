@@ -11,6 +11,8 @@
 		type="text"
 		v-model="roleInput"
 	/>
+
+	<button @click="$User.register('codypwakeford@gmail.com', 'password123')">Add user</button>
 	<button @click="$User.addRole(roleInput)">Add Role</button>
 	<button @click="console.log($ServicesConfig)">services config</button>
 	<pre>{{ user }}</pre>
